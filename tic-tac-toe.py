@@ -4,16 +4,16 @@ p1 = 1
 p2 = 2
 
 def createBoard(size):
-    #Creates a board of size x size dimensions.
+    """Creates a board of size x size dimensions."""
     board = [["." for i in range(size)] for j in range(size)]
     return board
 
 def draw(board):
-    #Makes the board look nice.
+    """Makes the board look nice."""
     print('\n'.join(map('  '.join, board)))
 
 def getLoc():
-    #Gets user input for where to put piece.
+    """Gets user input for where to put piece."""
     print("What x position do you want to put your piece?")
     x = int(input())
     print("What y position do you want to put your piece?")
@@ -21,7 +21,7 @@ def getLoc():
     return x, y
 
 def isOver(board, player):
-    #Determines whether the game is over.
+    """Determines whether the game is over."""
     if isThree(board, player): #If there is three in a row, game over.
         return True
     if isFull(board): #If the board is full, game over.
@@ -29,14 +29,14 @@ def isOver(board, player):
     return False
 
 def isFull(board):
-    #Checks if the board is full.
+    """Checks if the board is full."""
     for row in board:
         if "." in row: #If there is an empty space, the board isn't full.
             return False
     return True
 
 def isThree(board, player):
-    #Checks if there is three in a row
+    """Checks if there is three in a row."""
     if player == p1:
         piece = "x"
     else:
@@ -75,7 +75,7 @@ def isThree(board, player):
     return False
 
 def putPiece(piece, board):
-    #Places piece at board[x][y].
+    """Places piece at board[x][y]."""
     x, y = getLoc()
     if board[x][y] != ".": #Check if there is already a piece there.
         print("There is alreay a piece there, choose again.")
@@ -83,14 +83,14 @@ def putPiece(piece, board):
     board[x][y] = piece
 
 def takeTurn(player, board):
-    #Simulates a turn of tic-tac-toe.
+    """Simulates a turn of tic-tac-toe."""
     if player == p1:
         putPiece("x", board)
     else:
         putPiece("o", board)
 
 def play():
-    #Simulates a game.
+    """Simulates a game of tic-tac-toe"""
     board = createBoard(3) #Create a board.
     over = False
     while over != True: #Keep going until game is over.
