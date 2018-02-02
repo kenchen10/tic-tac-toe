@@ -38,9 +38,9 @@ def isFull(board):
 def isThree(board, player):
     """Checks if there is three in a row."""
     if player == p1:
-        piece = "x"
+        piece = "X"
     else:
-        piece = "o"
+        piece = "O"
     #Check if there are 3 in a row.
     for row in range(len(board)):
         for c in range(len(board)):
@@ -85,9 +85,9 @@ def putPiece(piece, board):
 def takeTurn(player, board):
     """Simulates a turn of tic-tac-toe."""
     if player == p1:
-        putPiece("x", board)
+        putPiece("X", board)
     else:
-        putPiece("o", board)
+        putPiece("O", board)
 
 def play():
     """Simulates a game of tic-tac-toe"""
