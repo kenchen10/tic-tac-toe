@@ -14,9 +14,9 @@ def draw(board):
 
 def getLoc():
     """Gets user input for where to put piece."""
-    print("What x position do you want to put your piece?")
+    print("x:")
     x = int(input())
-    print("What y position do you want to put your piece?")
+    print("y:")
     y = int(input())
     return x, y
 
@@ -63,14 +63,14 @@ def isThree(board, player):
         if board[i][i] != piece:
             break
         if board[i][i] == piece and i == len(board) - 1:
-            print("Player" + str(player) + " has won!")
+            print("Player " + str(player) + " has won!")
             return True
     for i in range(len(board)):
         #Up and to the right diagonal.
         if board[i][len(board) - 1 - i] != piece:
             break
         if board[i][len(board) - 1 -i] == piece and i == len(board) - 1:
-            print("Player" + str(player) + " has won!")
+            print("Player " + str(player) + " has won!")
             return True
     return False
 
@@ -78,7 +78,7 @@ def putPiece(piece, board):
     """Places piece at board[x][y]."""
     x, y = getLoc()
     if board[x][y] != ".": #Check if there is already a piece there.
-        print("There is alreay a piece there, choose again.")
+        print("There is alreay a piece there, choose again!")
         return putPiece(piece, board)
     board[x][y] = piece
 
@@ -94,11 +94,13 @@ def play():
     board = createBoard(3) #Create a board.
     over = False
     while over != True: #Keep going until game is over.
+        print("Player " + str(p1) + "'s turn:")
         takeTurn(p1, board)
         draw(board)
         over = isOver(board, p1)
         if over == True:
             break
+        print("Player " + str(p2) + "'s turn:")
         takeTurn(p2, board)
         draw(board)
         over = isOver(board, p2)
