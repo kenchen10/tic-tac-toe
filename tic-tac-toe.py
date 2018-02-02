@@ -1,10 +1,16 @@
 """I made this game of tic-tac-toe."""
+
 p1 = 1
 p2 = 2
+
 def createBoard(size):
     #Creates a board of size x size dimensions.
-    board = [[None for i in range(size)] for j in range(size)]
+    board = [["." for i in range(size)] for j in range(size)]
     return board
+
+def draw(board):
+    #Makes the board look nice.
+    print('\n'.join(map('  '.join, board)))
 
 def getLoc():
     #Gets user input for where to put piece.
@@ -25,7 +31,7 @@ def isOver(board, player):
 def isFull(board):
     #Checks if the board is full.
     for row in board:
-        if None in row: #If there is an empty space, the board isn't full.
+        if "." in row: #If there is an empty space, the board isn't full.
             return False
     return True
 
@@ -71,7 +77,7 @@ def isThree(board, player):
 def putPiece(piece, board):
     #Places piece at board[x][y].
     x, y = getLoc()
-    if board[x][y] != None: #Check if there is already a piece there.
+    if board[x][y] != ".": #Check if there is already a piece there.
         print("There is alreay a piece there, choose again.")
         return putPiece(piece, board)
     board[x][y] = piece
@@ -89,10 +95,10 @@ def play():
     over = False
     while over != True: #Keep going until game is over.
         takeTurn(p1, board)
-        print(board)
+        draw(board)
         over = isOver(board, p1)
         if over == True:
             break
         takeTurn(p2, board)
-        print(board)
+        draw(board)
         over = isOver(board, p2)
