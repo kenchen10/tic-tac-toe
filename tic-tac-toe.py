@@ -33,6 +33,7 @@ def isFull(board):
     for row in board:
         if "." in row: #If there is an empty space, the board isn't full.
             return False
+    print("Tie!")
     return True
 
 def isThree(board, player):
